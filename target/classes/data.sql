@@ -16,6 +16,7 @@
 
 INSERT INTO `role` (id, name) VALUES (1,'ADMIN');
 INSERT INTO `role` VALUES (2, 'USER');
+INSERT INTO `role` VALUES (3, 'DOCTOR')
 
 insert into `user_account` (id, username, password) values(1, 'fahmi', '$2a$06$2doaOXoMLpjUhiqZoxW6XuTH0HCGr61sMn./rMF2jFsUKV60lh1qG');
 -- insert into `user_account` (id, username, password) values(1, 'fahmi', 'fahmi');

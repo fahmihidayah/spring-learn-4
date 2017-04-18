@@ -87,7 +87,11 @@ public class Patient {
         this.diseaseHistorys = diseaseHistorys;
     }
     
-    
+    public void setValue(Patient patient){
+        this.name = patient.name;
+        this.address = patient.address;
+        this.phoneNumber = patient.phoneNumber;
+    }
    
     
 }
