@@ -2,12 +2,11 @@
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/repository/UserAccountRepository.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/repository/DiseaseRepository.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/repository/PatientRepository.java
-/Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/domain/PageWrapper.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/conf/WebAppConf.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/repository/DoctorRepository.java
-/Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/conf/ThymeleafConf.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/repository/DiseaseHistoryRepository.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/service/DiseaseService.java
+/Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/conf/Constantas.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/conf/SecurityWebInitializer.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/conf/DataBaseConf.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/controller/AdminController.java
@@ -21,6 +20,7 @@
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/domain/UserAccount.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/service/PatientService.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/domain/model/UserAccountForm.java
+/Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/domain/Pager.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/domain/Doctor.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/domain/DiseaseHistory.java
 /Users/fahmi/Documents/Netbeans-web/LearnSpring4/src/main/java/com/widsons/spr4/controller/PatientController.java

@@ -47,7 +47,8 @@ public class TestController {
     
     @GetMapping("/patient")
     public Page<Patient> getPatient(){
-        return patientService.findAllPage(new PageRequest(1, 5));
+        return null;
+//        return patientService.findAllPage(new PageRequest(1, 5));
     }
     
     

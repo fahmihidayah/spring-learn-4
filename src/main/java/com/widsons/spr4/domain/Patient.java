@@ -15,6 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -27,10 +30,17 @@ public class Patient {
     @GeneratedValue
     private long id;
     @Column
+    @NotNull
+    @NotEmpty
     private String name;
     @Column
+    @NotNull
+    @NotEmpty
     private String address;
     @Column
+    @NotNull
+    @NotEmpty
+    @Pattern(regexp="^(0|[1-9][0-9]*)$", message = "Not valid phone number")
     private String phoneNumber;
     
     @ManyToMany(mappedBy = "patients")

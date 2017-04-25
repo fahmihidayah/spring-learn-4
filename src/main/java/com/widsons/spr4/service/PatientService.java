@@ -5,11 +5,15 @@
  */
 package com.widsons.spr4.service;
 
+import com.widsons.spr4.conf.Constantas;
+import com.widsons.spr4.domain.Pager;
 import com.widsons.spr4.domain.Patient;
 import com.widsons.spr4.repository.PatientRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Service
 public class PatientService {
+    
     
     @Autowired
     PatientRepository patientRepository;
@@ -46,7 +51,9 @@ public class PatientService {
         save(patient);
     }
     
-    public Page<Patient> findAllPage(Pageable pageable){
-        return patientRepository.findAll(pageable);
+    public Page<Patient> findAll(Optional<Integer> page, Optional<Integer> pageSize){
+        int pageSizeResult = pageSize.orElse(Constantas.DEFAULT_PAGE_SIZE);
+        int pageResult = (page.orElse(Constantas.DEFAULT_PAGE) < 1) ? 0 : page.get() - 1;
+        return patientRepository.findAll(new PageRequest(pageResult, pageSizeResult));
     }
 }

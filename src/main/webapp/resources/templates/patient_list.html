@@ -71,7 +71,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="patient : ${patients}" >
+                                            <tr th:each="patient : ${patientPage.getContent()}" >
                                                 <td th:text="${patient.id}">1</td>
                                                 <td th:text="${patient.name}">Fahmi</td>
                                                 <td th:text="${patient.address}">Malang</td>
@@ -84,8 +84,21 @@
                                     <div>
                                         <a th:href="@{/patient/create}" class="btn btn-primary">Tambah baru</a>
                                         <ul class="pagination pull-right">
-                                            <li th:class="${currentPage == page} ? 'active' " th:each="page : ${#numbers.sequence(startPage, totalPage)}">
-                                                <a class="pageLink" th:text="${page}" th:href="@{/patient/list/} + ${page}"></a>
+                                            <li th:class="${patientPage.number == 0} ? disabled">
+                                                <a class="pageLink" th:href="@{/patient/list/(page=1)}">&laquo;</a>
+                                            </li>
+                                            <li th:class="${patientPage.number == 0} ? disabled">
+                                                <a class="pageLink" th:href="@{/patient/list/(page=${patientPage.number})}">&larr;</a>
+                                            </li>
+                                            <li th:class="${patientPage.number == (page - 1)} ? 'active pointer-disabled'"
+                                                th:each="page : ${#numbers.sequence(startPage, endPage)}">
+                                                <a class="pageLink" th:href="@{/patient/list/(page=${page})}" th:text="${page}"></a>
+                                            </li><!--
+-->                                         <li th:class="${patientPage.number + 1 == patientPage.totalPages} ? disabled">
+                                                <a class="pageLink" th:href="@{/patient/list/(page=${patientPage.number + 2})}">&rarr;</a>
+                                            </li>
+                                            <li th:class="${patientPage.number + 1 == patientPage.totalPages} ? disabled">
+                                                <a class="pageLink" th:href="@{/patient/list/(page=${patientPage.totalPages})}">&raquo;</a>
                                             </li>
                                         </ul>
                                     </div>

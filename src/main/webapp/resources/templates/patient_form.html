@@ -61,15 +61,15 @@
                                 <form role="form" th:action="${url}" th:object="${patient}" method="post">
                                     <fieldset>
                                         <div class="form-group">
-                                            Nama : 
+                                            Nama : <p th:if="${#fields.hasErrors('name')}" th:errors=*{name} style="color:red">Name error</p>
                                             <input th:field="*{name}" class="form-control"/>
                                         </div>
                                         <div class="form-group">
-                                            Alamat : 
+                                            Alamat : <p th:if="${#fields.hasErrors('address')}" th:errors=*{address} style="color:red">Address Error</p>
                                             <input th:field="*{address}" class="form-control"/>
                                         </div>
                                         <div class="form-group">
-                                            Telepon : 
+                                            Telepon : <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors=*{phoneNumber} style="color:red">Phone number error</p>
                                             <input th:field="*{phoneNumber}" class="form-control"/>
                                         </div>
                                         <input type="submit" class="btn btn-success" value="Simpan" />

@@ -5,13 +5,20 @@
  */
 package com.widsons.spr4.controller;
 
+import com.widsons.spr4.conf.Constantas;
+import com.widsons.spr4.domain.Pager;
 import com.widsons.spr4.domain.Patient;
 import com.widsons.spr4.service.PatientService;
+import java.util.List;
+import java.util.Optional;
+import javax.validation.Valid;
+import javax.xml.ws.BindingType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -44,21 +51,24 @@ public class PatientController {
     
     @PostMapping("/create")
     public String save(
-            @ModelAttribute
-                    Patient patient){
+           @ModelAttribute @Valid Patient patient, 
+            BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "patient_form";
+        }
         patientService.save(patient);
         return "redirect:/patient/list";
     }
     
     
     @GetMapping("/list")
-    public String listPage(Model model, @RequestParam("page") int page){
-        Page<Patient> pagePatient;
-        pagePatient = patientService.findAllPage(new PageRequest(page, 5));
-        model.addAttribute("patients", pagePatient.getContent());
-        model.addAttribute("currentPage", page);
-        model.addAttribute("totalPage", pagePatient.getTotalPages());
-        model.addAttribute("startPage", 0);
+    public String listPage(Model model, @RequestParam("page") Optional<Integer> page, 
+            @RequestParam("page_size") Optional<Integer> pageSize){
+        Page<Patient> patientPage = patientService.findAll(page, pageSize);
+        Pager pager = new Pager(patientPage.getTotalPages(), patientPage.getNumber(), Constantas.DEFAULT_PAGE_SHOW);
+        model.addAttribute("patientPage", patientPage);
+        model.addAttribute("startPage", pager.getStartPage());
+        model.addAttribute("endPage", pager.getEndPage());
         return "patient_list";
     }
     
@@ -70,7 +80,13 @@ public class PatientController {
     }
     
     @PostMapping("/edit/{id}")
-    public String update(@ModelAttribute Patient patient, @PathVariable("id") long id){
+    public String update(@ModelAttribute @Valid Patient patient, 
+            BindingResult bindingResult,
+            @PathVariable("id") long id,
+            Model model){
+        if(bindingResult.hasErrors()){
+            return "patient_form";
+        }
         patientService.update(patient, id);
         return "redirect:/patient/list";
     }
